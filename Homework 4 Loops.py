@@ -59,8 +59,8 @@ while continueLoop == 0:
                         numberOfYears = 1
                         print("Please enter a positive number")
 
-                    elif numberOfYears >= 0:
-                        print("Interest Rate : Monthly Payment : Total Payment")
+                    else:
+                        print("\tInterest Rate : Monthly Payment : Total Payment")
                         for loanRates in interestRate:
 
                             monthlyLoanRate = loanRates / 1200
@@ -73,7 +73,7 @@ while continueLoop == 0:
                             totalPayment = int(totalPayment * 100) / 100
 
 
-                            print("%.3f" % loanRates, "\t\t", "%.2f" % monthlyPayment, "\t", "%.2f" % totalPayment)
+                            print("\t", "%.3f" % loanRates, "\t\t", "%.2f" % monthlyPayment, "\t", "%.2f" % totalPayment)
 
                             if loanRates == 8:
                                 numberOfYears = 0
@@ -81,15 +81,33 @@ while continueLoop == 0:
                                 continueLoop = 1
 
 
-
+# Having the continue loop set to 1 will let me askk the user if they want to
+# run the program again using a while loop
     if continueLoop == 1:
-        
-        runAgain = input("Run the program again?: y/n ")
-        if runAgain == "y" or runAgain == "yes":
-            continueLoop = 0
-            numberOfYears = 1
-            loanAmount = 1
-            interestRate = loanrange(5,8.125,.125)
+
+
+        while continueLoop == 1:
+            runAgain = input("Run the program again?: y/n ")
+            
+            # If the user enters y or yes, the program will restart
+            
+            if runAgain == "y" or runAgain == "yes":
+                continueLoop = 0
+                numberOfYears = 1
+                loanAmount = 1
+                interestRate = loanrange(5,8.125,.125)
+
+            # If the user enters n or no, the program will break
+
+            elif runAgain == "n" or runAgain == "no":
+                print("Thank you for using the Finacial Application")
+                break
+
+            # If they enter anything else, the continue loop will start over
+            # an they will be prompted to enter yes or no.
+            
+            else:
+                continueLoop = 1
 
     else:
         break
